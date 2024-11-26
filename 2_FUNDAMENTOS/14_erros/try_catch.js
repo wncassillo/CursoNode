@@ -1,3 +1,6 @@
+//O objetivo é mostrar que mesmo com um claro erro, 
+//a tentativa de alteração de uma constante,
+// o programa continua sua execução
 const x = 10
 
 try{

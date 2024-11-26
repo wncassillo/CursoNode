@@ -1,5 +1,8 @@
 import http from "http"
 import url from "url"
+//Usando os dois modulos em conjunto, conseguimos criar uma página html em nosso servidor http
+//Que recebe o nome do usuario como informação na sua url, e usando o modulo de url, conseguimos
+//alterar a página usando a informação obtida do html.
 
 const port = 3000
 

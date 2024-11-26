@@ -1,13 +1,14 @@
-import EventEmitter from 'events';
+import EventEmitter from "events"; // como o nome sugere um "emitidor" de eventos
 
-const eventEmitter = new EventEmitter()
+const eventEmitter = new EventEmitter();
 
-eventEmitter.on('start', () => {
-    console.log("Durante")
-})
+//um 'gatilho' que deixa determinado evento preparado e o "ativa" ao ser chamado
+eventEmitter.on("start", () => {
+  console.log("Durante");
+});
 
-console.log("Antes")
+console.log("Antes"); // Antes do gatilho e do evento
 
-eventEmitter.emit('start')
+eventEmitter.emit("start"); // O disparo do gatilho
 
-console.log("Após")
+console.log("Após"); //Depois do evento

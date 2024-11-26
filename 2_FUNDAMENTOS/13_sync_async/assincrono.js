@@ -1,8 +1,9 @@
+ //para rodar, apague o 'arquivo.txt'
 import fs from "fs"
 
 console.log("início")
 
-fs.writeFile('arquivo.txt', "ola", function(err) {
+fs.writeFile('arquivo.txt', "Olá, fui criado pelo assíncrono.", function(err) {
     setTimeout(function() {
         console.log("Arquivo criado");
     },1000);

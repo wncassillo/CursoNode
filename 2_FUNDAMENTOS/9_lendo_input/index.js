@@ -1,3 +1,4 @@
+// Pergunta é feita no console, recebe uma resposta e 'reage' a resposta.
 const readline = require("readline").createInterface({
     input: process.stdin,
     output: process.stdout,

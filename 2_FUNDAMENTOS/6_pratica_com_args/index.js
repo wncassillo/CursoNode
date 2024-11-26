@@ -1,12 +1,12 @@
-//externo
-const minimist = require('minimist')
+// ex exec: "node index.js --a=2 --b=5
+//modulo externo
+const minimist = require("minimist");
+//modulo interno
+const soma = require("./soma").soma;
 
-//interno
-const soma = require('./soma').soma
+const args = minimist(process.argv.slice(2));
 
-const args = minimist(process.argv.slice(2))
+const a = parseInt(args["a"]);
+const b = parseInt(args["b"]);
 
-const a = parseInt(args['a'])
-const b = parseInt(args['b'])
-
-soma(a,b)
+soma(a, b);
