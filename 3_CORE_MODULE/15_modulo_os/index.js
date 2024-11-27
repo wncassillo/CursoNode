@@ -1,7 +1,7 @@
-import os from "os"
+import os from "os";
+//modulo com métodos que podem extrair informações do SO
 
-console.log(os.cpus())
-console.log(os.freemem())
-console.log(os.homedir())
-console.log(os.type())
-// métodos que estraem informações do sistema operacional, portanto da máquina.
+console.log(os.cpus());
+console.log(os.freemem());
+console.log(os.homedir());
+console.log(os.type());
