@@ -1,0 +1,4 @@
+Mostrando o processo de criação de projeto pelo npm
+(npm init)
+As perguntas e comparando com as configurações que 
+acabam indo para o package.json

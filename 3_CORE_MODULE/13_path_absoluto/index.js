@@ -1,12 +1,12 @@
-import path from "path"
+import path from "path";
 
-// path absoluto
-console.log(path.resolve("teste.txt"))
+// path absoluto, obtem o path "completo" de um arquivo, sua localização precisa no disco.
+console.log(path.resolve("teste.txt"));
 
-// formar path
-const midFolder = 'relatorios'
-const filename ='wilson.txt'
+// formar path, com um "arquivo alvo" e uma pasta que o contem
+const midFolder = "relatorios";
+const filename = "wilson.txt";
 
-const finalPath = path.join('/', 'arquivos', midFolder , filename)
-
-console.log(finalPath)
+const finalPath = path.join("/", "arquivos", midFolder, filename);
+console.log("Path formado:");
+console.log(finalPath);

@@ -1,0 +1,2 @@
+Mostrando a "criação rápida" de um projeto pelo npm 
+(npm init -y)
