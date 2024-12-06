@@ -9,3 +9,7 @@ import _ from "lodash";
 
 const arr = [1, 2, 2, 2, 3, 3, 4, 5, 5, 6, 7, 7];
 console.log(_.sortedUniq(arr));
+
+//Não faz parte dessa aula, mas é nesse ponto onde vemos um pouco sobre npx
+//e entendemos que ele é o "executor" de pacotes
+//exemplo com o cowsay
