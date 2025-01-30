@@ -16,7 +16,13 @@ function operation() {
         type: "list",
         name: "action",
         message: "O que você deseja fazer?",
-        choices: ["Criar Conta", "Acessar Conta", "Depósito", "Sair"],
+        choices: [
+          "Criar Conta",
+          "Consultar Saldo",
+          "Depósito",
+          "Sacar",
+          "Sair",
+        ],
       },
     ])
     .then((answer) => {
@@ -24,10 +30,12 @@ function operation() {
       // Caminhos das escolhas
       if (action === "Criar Conta") {
         createAccount();
-      } else if (action === "Acessar Conta") {
-        loginAccount();
+      } else if (action === "Consultar Saldo") {
+        getAccountBalance();
       } else if (action === "Depósito") {
         deposit();
+      } else if (action === "Sacar") {
+        withdraw();
       } else if (action === "Sair") {
         console.log(chalk.bgBlueBright("Obrigado por usar o Accounts!"));
         console.log("Encerrando Sistema.");
@@ -115,11 +123,6 @@ function getAccount(accountName) {
   return JSON.parse(accountJSON);
 }
 
-function loginAccount() {
-  console.log(chalk.yellow("WIP"));
-  operation();
-}
-
 function buildAccount() {
   //Criação de Conta
   inquirer
@@ -156,4 +159,92 @@ function buildAccount() {
       }
     })
     .catch((err) => console.log(err));
+}
+
+//Shows Account balance
+function getAccountBalance() {
+  inquirer
+    .prompt([
+      {
+        name: "accountName",
+        message: "Qual o nome da sua conta?",
+      },
+    ])
+    .then((answer) => {
+      const accountName = answer["accountName"];
+      if (!checkAccount(accountName)) {
+        //verifies if a account with given name exists
+        return getAccountBalance();
+      }
+
+      const accountData = getAccount(accountName);
+
+      console.log(
+        chalk.bgBlue.black(
+          `O Saldo da conta especificada é de RS$${accountData.balance}`
+        )
+      );
+      operation();
+    })
+    .catch((err) => console.log(err));
+}
+
+//withdraws an amount from a account
+function withdraw() {
+  inquirer
+    .prompt([
+      {
+        name: "accountname",
+        message: "De qual conta você deseja realizar o saque?",
+      },
+    ])
+    .then((answer) => {
+      const accountName = answer["accountname"];
+      if (!checkAccount(accountName)) {
+        return withdraw();
+      }
+
+      inquirer
+        .prompt([
+          {
+            name: "amount",
+            message: "Qual a quantia que você deseja sacar?",
+          },
+        ])
+        .then((answer) => {
+          const amount = answer["amount"];
+          removeAmount(accountName, amount);
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+}
+
+function removeAmount(accountName, amount) {
+  const accountData = getAccount(accountName);
+
+  if (!amount) {
+    console.log(chalk.bgRed.black("Ocorreu um erro, tente novamente."));
+    return withdraw();
+  }
+
+  if (accountData.balance < amount) {
+    console.log(chalk.bgRed.black("Saldo insuficiente para este saque"));
+    return withdraw();
+  }
+
+  accountData.balance = parseFloat(accountData.balance) - parseFloat(amount);
+  fs.writeFileSync(
+    `accounts/${accountName}.json`,
+    JSON.stringify(accountData),
+    function (err) {
+      console.log(err);
+    }
+  );
+  console.log(
+    chalk.bgGreen.white(
+      `Saque de R${amount},00 efetuado. O novo Saldo da conta é de R$${accountData.balance}`
+    )
+  );
+  operation();
 }
