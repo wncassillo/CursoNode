@@ -1,0 +1,11 @@
+Nodemon is a development module, that makes so you don't
+have to manually restart the server everytime something
+on the project files is changed.
+Everytime a file is saved nodemon restarts the project for you,
+making your life a little bit easier.
+
+To use it:
+'npm install --save-dev nodemon' to install it as a development module.
+create a script in your project package.json like the following examples:
+    "start": "nodemon <file> <server> <port>"
+    "start": "nodemon ./index.js localhost 3000"

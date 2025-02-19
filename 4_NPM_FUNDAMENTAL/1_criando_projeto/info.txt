@@ -2,3 +2,6 @@ Mostrando o processo de criação de projeto pelo npm
 (npm init)
 As perguntas e comparando com as configurações que 
 acabam indo para o package.json
+
+(npm init -y && npm pkg set type=module)
+cria um package.json jpa com type module
