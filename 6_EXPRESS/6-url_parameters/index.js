@@ -9,7 +9,7 @@ const app = express();
 const port = 3000;
 const basePath = path.join(dirname, "templates");
 
-//Using the same project as 6-3, now to learn how to ger parameters from the url.
+//Using the same project as 6-3, now to learn how to get parameters from the url.
 
 app.get("/users/:id", (req, res) => {
   const id = req.params.id;
